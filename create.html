@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-6">
+                <label for="productName">Product Name</label>
+                <input type="text" id="productName" placeholder="Product Name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="productCode">Product Code</label>
+                <input type="text" id="productCode" placeholder="Product Code">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="Unit Price">Unit Price</label>
+                <input type="text" id="unitPrice" placeholder="Unit Price">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="qty">Qty</label>
+                <input type="text" id="qty" placeholder="qty">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="totalPrice">Total Price</label>
+                <input type="text" id="totalPrice" placeholder="Total Price">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="productImg">Product Image</label>
+                <input type="text" id="productImg" placeholder="Product Image">
+            </div>
+        </div>
+        <div class="row">
+            <button onclick="createItem()">Create</button>
+        </div>
+    </div>
+
+    <script src="js/axios.min.js"></script>
+    <script>
+        async function createItem(){
+            let  productName    =   document.getElementById('productName').value;
+            let  productCode    =   document.getElementById('productCode').value;
+            let  unitPrice      =   document.getElementById('unitPrice').value;
+            let  qty            =   document.getElementById('qty').value;
+            let  totalPrice     =   document.getElementById('totalPrice').value;
+            let  productImg     =   document.getElementById('productImg').value;
+
+            let createObj = {
+
+                "ProductName":productName,
+                "ProductCode":productCode,
+                "Qty":qty,
+                "UnitPrice":unitPrice,
+                "TotalPrice":totalPrice,
+                "Img":productImg,
+
+            }
+
+            let res = await axios.post(`https://crud.teamrabbil.com/api/v1/CreateProduct`,createObj);
+            if(res.status === 200){                
+                window.location.href = 'index.html';
+            }else{
+               alert('error'); 
+            }
+        }
+    </script>
+
+
+</body>
+</html>
