@@ -8,6 +8,9 @@
 
 </head>
 <body>
+    <div id="loader" class="loading d-none">
+    </div>
+    
     <button><a href="create.html">create</a></button>
     <div class="container">
         <label>Product ID</label>
@@ -33,7 +36,9 @@
        async function fillExistingData(){
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
+        document.getElementById('loader').classList.remove('d-none')
         let res = await axios.get(`https://crud.teamrabbil.com/api/v1/ReadProductByID/${id}`);
+        document.getElementById('loader').classList.add('d-none')
         if(res.status === 200){
             let items = res.data['data'][0]
             console.log(items);
