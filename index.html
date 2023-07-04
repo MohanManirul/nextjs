@@ -8,85 +8,42 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container-fluid">
-      <h1 id="header">This is header</h1>
+
+
+    <div class="container">
+      
       <div class="row">
-        <div class="col-md-6"><p>hi js 6</p></div>
-        <div class="col-md-6"><p>hi js 6</p></div>
-      </div>
+        <h2>Shopping Cart</h2>
+        <div class="col-md-8" style="border: 2px solid rgb(233, 198, 2); border-radius: 5px;margin-right: 2px;">
+          <p>Product List</p>    
+           <div id="itemList" style="margin: 2px; display: inline-flexbox;">
 
-      <button><a href="create.html">Create</a></button>
-    
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Product Name</th>
-            <th scope="col">Product Code</th>
-            <th scope="col">Unit Price</th>
-            <th scope="col">Qty</th>
-            <th scope="col">TotalPrice</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Update</th>
-          </tr>
-        </thead>
-        <tbody id="itemList">
-          
-        </tbody>
-      </table>
+           </div>
+       </div>
 
-
-    </div>
+       <div class="col-md-3">
+         <p>Cart Itms</p>
+         <p id="amount"></p>
+       </div>
+     </div>
 
     </div>
     
     <script src="js/axios.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 
     <script>
-        getList();
-      async function getList(){
-
-        let res = await axios.get(`https://crud.teamrabbil.com/api/v1/ReadProduct`);
-       
-        if(res.status === 200){
-         let data = res.data['data'];
-         data.forEach(item => {
-          document.getElementById('itemList').innerHTML += (
-            `
-              <tr>
-                <td>${item.ProductName}</td>  
-                <td>${item.ProductCode}</td>  
-                <td>${item.UnitPrice}</td>  
-                <td>${item.Qty}</td>  
-                <td>${item.TotalPrice}</td>  
-                <td><button class='btn btn-danger' onclick="deleteItem('${item['_id']}')">Delete</button></td>  
-                <td><button class='btn btn-success' onclick="updateItem('${item['_id']}')">Update</button></td>  
-              </tr>
-            `
-          );
-         });
-        }else{
-          console.log('error');
+      function addItem(id){
+        let text;
+        let amount = prompt("Please enter amount:", "1");
+        if (amount == null || amount == "") {
+          text = "User cancelled the prompt.";
+        } else {
+          text = "Hello " + amount + "! How are you today?";
         }
-
-      }
-
-
-      async function deleteItem(id){
-       let res = await axios.get(`https://crud.teamrabbil.com/api/v1/DeleteProduct/${id}`);
-       if(res.status === 200){
-          alert('Deleted');
-          document.getElementById('itemList').innerHTML = ""
-          await getList();
-       }else{
-        console.log('error');
-       }
-      }
-
-      async function updateItem(id){
-        window.location = `update.html?id=${id}`
+        document.getElementById("amount").innerHTML = text;
       }
     </script>
-    
+
 </body>
 </html>
