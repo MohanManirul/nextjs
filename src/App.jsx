@@ -17,7 +17,7 @@ export default function App() {
   <div className="container">
 
     <Header title="this is header"/> 
-     <Content items = {items} onAddItems = {handleAddItems}/>
+    <Content items = {items} onAddItems = {handleAddItems}/>
     <Footer/>
 
   </div>
