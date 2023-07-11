@@ -3,9 +3,7 @@
 const Header = (props) => {
     return (
         <div>
-            <ul>
-                <li>{props.title}</li> 
-            </ul>
+            <h1>{props.title}</h1>
         </div>
     );
 };
