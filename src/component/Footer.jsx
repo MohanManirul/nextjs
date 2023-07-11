@@ -2,8 +2,8 @@
 
 const Footer = () => {
     return (
-        <div>
-            <p>All Rights Reserved</p>
+        <div className="footer">
+            <p>&copy; All Rights Reserved</p>
         </div>
     );
 };

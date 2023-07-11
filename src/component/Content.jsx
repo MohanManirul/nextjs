@@ -23,21 +23,21 @@ export default function Content({
    
 
     return (
-        <>
+        <div className="body">
         
-        <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Items..." value={description} onChange={(e)=> setDescription(e.target.value)}/>
-            <button className="btn btn-success">Add</button>
-        </form>
-        <div className="list">
-           <ol>
-                {
-                sortedItems.map((item ,i) => (
-                    <li key={i}>{item.description}</li>
-                ))
-                }
-            </ol>
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Items..." value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <button className="btn btn-success">Add</button>
+            </form>
+            <div className="list">
+            <ol>
+                    {
+                    sortedItems.map((item ,i) => (
+                        <li key={i}>{item.description}</li>
+                    ))
+                    }
+                </ol>
+            </div>
         </div>
-        </>
     )
 }
