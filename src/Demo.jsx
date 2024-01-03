@@ -1,11 +1,10 @@
 
-
 const componentName = () => {
-  return (
-    <div>
-      
-    </div>
-  );
+    return (
+        <div>
+            
+        </div>
+    );
 };
 
 export default componentName;
