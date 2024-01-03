@@ -1,11 +1,12 @@
+import Demo from "./Demo";
 
-
-const componentName = () => {
+const App = () => {
   return (
     <div>
-      
+      <p>I'm learning reactjs</p>
+      <Demo />
     </div>
   );
 };
 
-export default componentName;
+export default App;
